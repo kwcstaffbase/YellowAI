@@ -6,8 +6,26 @@
     return window.location.pathname.indexOf(TARGET_PAGE_ID) !== -1;
   }
 
+  function hideWidget() {
+    var widget = document.getElementById("ymDivBar");
+    if (widget) widget.style.display = "none";
+    // Also hide the chat iframe if it exists
+    var iframe = document.getElementById("ymIframe");
+    if (iframe) iframe.style.display = "none";
+  }
+
+  function showWidget() {
+    var widget = document.getElementById("ymDivBar");
+    if (widget) widget.style.display = "";
+    var iframe = document.getElementById("ymIframe");
+    if (iframe) iframe.style.display = "";
+  }
+
   function loadYellowAI() {
-    if (ymLoaded) return;
+    if (ymLoaded) {
+      showWidget();
+      return;
+    }
     ymLoaded = true;
 
     console.log("YellowAI: Loading widget on target page");
@@ -45,8 +63,10 @@
   setInterval(function () {
     if (window.location.pathname !== lastPath) {
       lastPath = window.location.pathname;
-      if (isTargetPage() && !ymLoaded) {
+      if (isTargetPage()) {
         loadYellowAI();
+      } else {
+        hideWidget();
       }
     }
   }, 500);
