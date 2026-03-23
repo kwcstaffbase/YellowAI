@@ -1,5 +1,5 @@
 (function () {
-  var TARGET_PAGE_ID = "68935e6e225d347d8b165ba5";
+  var TARGET_PAGE_ID = "68935e6e225d347d8b165ba6";
   var ymLoaded = false;
 
   function isTargetPage() {
