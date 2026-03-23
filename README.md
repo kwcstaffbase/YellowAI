@@ -1,2 +1,2 @@
 # YellowAI
-YellowAI custom JS for Henry Schein
+YellowAI custom JS
