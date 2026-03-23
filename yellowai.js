@@ -53,4 +53,12 @@
   var lastPath = window.location.pathname;
   setInterval(function () {
     if (window.location.pathname !== lastPath) {
-      lastPath = windo
+      lastPath = window.location.pathname;
+      if (isTargetPage()) {
+        loadYellowAI();
+      } else {
+        hideWidget();
+      }
+    }
+  }, 500);
+})();
