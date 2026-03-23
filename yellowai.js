@@ -7,18 +7,13 @@
   }
 
   function hideWidget() {
-    var widget = document.getElementById("ymDivBar");
-    if (widget) widget.style.display = "none";
-    // Also hide the chat iframe if it exists
-    var iframe = document.getElementById("ymIframe");
-    if (iframe) iframe.style.display = "none";
+    var container = document.getElementById("ymPluginDivContainerInitial");
+    if (container) container.style.display = "none";
   }
 
   function showWidget() {
-    var widget = document.getElementById("ymDivBar");
-    if (widget) widget.style.display = "";
-    var iframe = document.getElementById("ymIframe");
-    if (iframe) iframe.style.display = "";
+    var container = document.getElementById("ymPluginDivContainerInitial");
+    if (container) container.style.display = "block";
   }
 
   function loadYellowAI() {
@@ -27,8 +22,6 @@
       return;
     }
     ymLoaded = true;
-
-    console.log("YellowAI: Loading widget on target page");
 
     window.ymConfig = {
       bot: "x1765817669787",
@@ -53,21 +46,11 @@
     t.parentNode.insertBefore(e, t);
   }
 
-  // Check on initial load
   if (isTargetPage()) {
     loadYellowAI();
   }
 
-  // Watch for SPA navigation changes
   var lastPath = window.location.pathname;
   setInterval(function () {
     if (window.location.pathname !== lastPath) {
-      lastPath = window.location.pathname;
-      if (isTargetPage()) {
-        loadYellowAI();
-      } else {
-        hideWidget();
-      }
-    }
-  }, 500);
-})();
+      lastPath = windo
